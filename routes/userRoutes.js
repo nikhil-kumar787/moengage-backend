@@ -1,6 +1,11 @@
 import express from "express";
-import { addRating, getReviews } from "../controllers/reviewController.js";
-import { authUser, registerUser } from "../controllers/userController.js";
+// import { addRating, getReviews } from "../controllers/reviewController.js";
+import {
+  authUser,
+  registerUser,
+  getReviews,
+  addRating,
+} from "../controllers/userController.js";
 const router = express.Router();
 
 router.get("/review/:id", getReviews);

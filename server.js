@@ -2,7 +2,7 @@ import express from "express";
 import env from "dotenv";
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
-import reviewRoutes from "./routes/reviewRoutes.js";
+// import reviewRoutes from "./routes/reviewRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 import cors from "cors";
 
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/users", userRoutes);
-app.use("/api/anime", reviewRoutes);
+// app.use("/api/anime", reviewRoutes);
 
 // Error Handling middlewares
 app.use(notFound);
