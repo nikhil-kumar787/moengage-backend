@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type":"module",
   "scripts": {
-    "start": "node server.js"
+    "start": "node --exec babel-node server.js"
   },
   "keywords": [],
   "author": "",
