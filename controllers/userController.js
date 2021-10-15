@@ -58,7 +58,10 @@ const registerUser = asyncHandler(async (req, res) => {
 const addRating = asyncHandler(async (req, res, next) => {
   const { name, rating, userId, animeId, desc } = req.body;
 
-  const anime_review = await Review.findOne({ userId: userId });
+  const anime_review = await Review.findOne({
+    userId: userId,
+    animeId: animeId,
+  });
   if (!anime_review) {
     const review = new Review({
       name,
@@ -78,11 +81,11 @@ const addRating = asyncHandler(async (req, res, next) => {
       throw new Error("Something went wrong");
     }
   } else {
-    const review = await Review.findOne({ userId: userId });
+    //const review = await Review.find({ userId: userId });
 
-    if (review) {
+    if (anime_review) {
       const existingAnimeReview = await Review.findOneAndUpdate(
-        { animeId: animeId },
+        { animeId: animeId, userId: userId },
         { $set: { rating: rating, desc: desc } },
         { new: true, upsert: true, useFindAndModify: false }
       );
